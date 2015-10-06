@@ -19,6 +19,13 @@ Usage
 into a path like `/my/base/path/2015/10-05/IMG_0001.JPG`.
 
 
+Features
+--------
+
+Recognizes when there already exists an identical file at the target location,
+or if there is a different file at the target location.
+
+
 To do
 -----
 
