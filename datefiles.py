@@ -24,14 +24,15 @@ def main(target_dir, file_list):
         if os.path.isfile(new_path):
             existing_md = os.stat(new_path)
             if existing_md.st_size != md.st_size:
-                print("  ! Not overwriting %s with different file %s" % (new_path, fname))
-                continue
+                print("  ! Not overwriting %s with different-sized file %s" % (new_path, fname))
 
             existing_file_sha1 = sha1_file(new_path)
             new_file_sha1 = sha1_file(fname)
             if existing_file_sha1 == new_file_sha1:
                 print("Skipping identical files %s and %s" % (new_path, fname))
-                continue
+            else:
+                print("  ! Not overwriting %s with different file %s" % (new_path, fname))
+            continue
         elif not os.path.isdir(new_dir):
             print("Creating directory %s" % (new_dir,))
             os.makedirs(new_dir)
